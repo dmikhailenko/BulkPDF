@@ -15,44 +15,56 @@ namespace OneRecToManyPdfsConsole
 
         static void Main(string[] args)
         {
-            //var curDir = Directory.GetCurrentDirectory();
-            var dataFolderPath = Properties.Settings.Default.DataFolderPath;
-            var recordFileName = Properties.Settings.Default.RecordFileName;
-
-            dataSource = new Spreadsheet();
-            var myContacts = GetMyContacts(Path.Combine(dataFolderPath, recordFileName));
-
-            var pickedCont = PickContact(myContacts);
-
-            if (pickedCont == null)
+            try
             {
-                Console.WriteLine("Not a valid number. See ya...");
-                Environment.Exit(0);
+
+                //var curDir = Directory.GetCurrentDirectory();
+                var dataFolderPath = Properties.Settings.Default.DataFolderPath;
+                var recordFileName = Properties.Settings.Default.RecordFileName;
+
+                dataSource = new Spreadsheet();
+                var myContacts = GetMyContacts(Path.Combine(dataFolderPath, recordFileName));
+
+                var pickedCont = PickContact(myContacts);
+
+                if (pickedCont == null)
+                {
+                    Console.WriteLine("Not a valid number. See ya...");
+                    Environment.Exit(0);
+                }
+
+                // todo: list all templates
+                var templateFiles = Directory.GetFiles(dataFolderPath, "*.bulkpdf");
+                Console.Write(string.Join("\n", templateFiles.Select(x => x.Split("\\".ToArray()).Last().Replace(".bulkpdf", ""))));
+                Console.WriteLine();
+
+                // todo: fill all templates
+                List<String> files = FillTemplatesWithSingleContact(pickedCont, dataFolderPath, templateFiles);
+
+                // todo: pick templates
+
+                // open the new folder
+                Process.Start("explorer.exe", outFolderPath);
+
             }
-
-            // todo: list all templates
-            var templateFiles = Directory.GetFiles(dataFolderPath, "*.bulkpdf");
-            Console.Write(string.Join("\n", templateFiles.Select(x=>x.Split("\\".ToArray()).Last().Replace(".bulkpdf", ""))));
-            Console.WriteLine();
-
-            // todo: fill all templates
-            List<String> files = FillTemplatesWithSingleContact(pickedCont, dataFolderPath, templateFiles);
-
-            // todo: pick templates
-
-            // open the new folder
-            Process.Start("explorer.exe", outFolderPath);
+            catch (Exception)
+            {
+                Console.ReadLine();
+            }
+            
         }
 
         private static List<string> FillTemplatesWithSingleContact(Dictionary<string, string> pickedCont, string dataFolderPath, string[] templateFiles)
         {
             outFolderPath = Path.Combine(dataFolderPath, "out", DateTime.Now.ToString("yyyyMMddHHmmss"));
+            
             Directory.CreateDirectory(outFolderPath);
 
             var outFileNames = new List<string>();
             // loop templates
             foreach (var templateFile in templateFiles)
             {
+
                 Dictionary<string, PDFField> pdfFields = LoadPdfFieldConfiguration(templateFile);
 
                 // PDF file name
@@ -76,7 +88,7 @@ namespace OneRecToManyPdfsConsole
                 }
 
                 // PDF
-                pdf.SaveFilledPDF(Path.Combine(outFolderPath, exportFileName), true, false, false, "");
+                pdf.SaveFilledPDF(Path.Combine(outFolderPath, exportFileName), false, false, false, "");
                 pdf.ResetFieldValue();
 
             }
