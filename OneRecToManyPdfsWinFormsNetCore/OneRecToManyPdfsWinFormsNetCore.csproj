@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BulkPDFCore\BulkPDFCore.csproj" />
+    <ProjectReference Include="..\BulkPDF\BulkPDF.csproj" />
+    <ProjectReference Include="..\OneRecToManyPdfsCore\OneRecToManyPdfsCore.csproj" />
+  </ItemGroup>
+
+</Project>

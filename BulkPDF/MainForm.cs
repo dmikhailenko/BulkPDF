@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
@@ -19,6 +20,9 @@ namespace BulkPDF
         private ProgressForm progressForm;
         private int tempSelectedIndex;
         private bool unicode = false;
+
+        public string InitialDirectory { get; set; } = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        public string BulkPdfSettingsFileName { get; set; }
 
         public MainForm()
         {
@@ -78,7 +82,7 @@ namespace BulkPDF
             else
             {
                 bNext.Show();
-                bFinish.Show();
+                // bFinish.Show();
             }
         }
 
@@ -290,7 +294,7 @@ namespace BulkPDF
         {
             // Select File
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            openFileDialog.InitialDirectory = InitialDirectory;
             openFileDialog.Filter = "PDF|*.pdf";
             openFileDialog.FilterIndex = 1;
             openFileDialog.Multiselect = false;
@@ -301,6 +305,7 @@ namespace BulkPDF
                     pdf.Close();
                 pdf = new PDF();
                 OpenPDF(openFileDialog.FileName);
+                BulkPdfSettingsFileName = openFileDialog.FileName + ".bulkpdf";
             }
         }
 
@@ -399,7 +404,7 @@ namespace BulkPDF
         private void bLoadConfiguration_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            openFileDialog.InitialDirectory = InitialDirectory;
             openFileDialog.Filter = "BulkPDF Options|*.bulkpdf";
             openFileDialog.FilterIndex = 1;
             openFileDialog.Multiselect = false;
@@ -407,6 +412,7 @@ namespace BulkPDF
             {
                 try
                 {
+                    BulkPdfSettingsFileName = openFileDialog.FileName;
                     XDocument xDocument = XDocument.Parse(File.ReadAllText(openFileDialog.FileName));
 
                     //// Options
@@ -500,6 +506,7 @@ namespace BulkPDF
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "BulkPDF Options|*.bulkpdf";
+            saveFileDialog.FileName = BulkPdfSettingsFileName.Split("\\".ToArray()).Last();
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 var xmlWriterSettings = new XmlWriterSettings();
@@ -653,7 +660,7 @@ namespace BulkPDF
         {
             // Select File
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            openFileDialog.InitialDirectory = InitialDirectory;
             openFileDialog.Filter = "Spreadsheet|*.xlsx;*.xlsm;";
             openFileDialog.FilterIndex = 1;
             openFileDialog.Multiselect = false;

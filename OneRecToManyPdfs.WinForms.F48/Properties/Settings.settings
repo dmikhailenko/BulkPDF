@@ -1,9 +1,9 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OneRecToManyPdfsConsole.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OneRecToManyPdfs.WinForms.F48.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="DataFolderPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Data\OneRecToManyPdfsConsole</Value>
+      <Value Profile="(Default)">C:\Data\OneRecToManyPdfs</Value>
     </Setting>
     <Setting Name="RecordFileName" Type="System.String" Scope="User">
       <Value Profile="(Default)">MyRecords.xlsx</Value>

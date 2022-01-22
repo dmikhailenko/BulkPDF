@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OneRecToManyPdfsConsole.Properties {
+namespace OneRecToManyPdfs.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,7 +25,7 @@ namespace OneRecToManyPdfsConsole.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Data\\OneRecToManyPdfsConsole")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Data\\OneRecToManyPdfs")]
         public string DataFolderPath {
             get {
                 return ((string)(this["DataFolderPath"]));

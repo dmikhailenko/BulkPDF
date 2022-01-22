@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkPDFCore", "BulkPDFCore\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneRecToManyPdfsConsole", "OneRecToManyPdfsConsole\OneRecToManyPdfsConsole.csproj", "{56751865-5A89-477D-9F17-FE6A79415AE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneRecToManyPdfsCore", "OneRecToManyPdfsCore\OneRecToManyPdfsCore.csproj", "{316A89CC-EEB4-4663-8275-C1C65EEFFEBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneRecToManyPdfs", "OneRecToManyPdfs.WinForms.F48\OneRecToManyPdfs.csproj", "{081B9409-5C7D-4517-94C6-3FD4F3D2D688}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,14 @@ Global
 		{56751865-5A89-477D-9F17-FE6A79415AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56751865-5A89-477D-9F17-FE6A79415AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56751865-5A89-477D-9F17-FE6A79415AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{316A89CC-EEB4-4663-8275-C1C65EEFFEBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316A89CC-EEB4-4663-8275-C1C65EEFFEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316A89CC-EEB4-4663-8275-C1C65EEFFEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316A89CC-EEB4-4663-8275-C1C65EEFFEBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{081B9409-5C7D-4517-94C6-3FD4F3D2D688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{081B9409-5C7D-4517-94C6-3FD4F3D2D688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{081B9409-5C7D-4517-94C6-3FD4F3D2D688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{081B9409-5C7D-4517-94C6-3FD4F3D2D688}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

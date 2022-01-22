@@ -123,8 +123,15 @@
   <data name="bBack.Text" xml:space="preserve">
     <value>&lt; Zurück</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bFinish.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="bFinish.Text" xml:space="preserve">
     <value>Fertig stellen</value>
+  </data>
+  <data name="bFinish.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -421,7 +428,6 @@ Wir empfehlen bei der ersten Benutzung der Anwendung sich die mitgelieferten Bei
   <data name="bLoadConfiguration.Text" xml:space="preserve">
     <value>Konfiguration laden</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="llDokumentation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -548,6 +554,9 @@ Wir empfehlen bei der ersten Benutzung der Anwendung sich die mitgelieferten Bei
   </data>
   <data name="bSelectOwnFont.Text" xml:space="preserve">
     <value>Auswählen...</value>
+  </data>
+  <data name="cbCustomFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="cbCustomFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 46</value>
@@ -820,5 +829,8 @@ Wir empfehlen bei der ersten Benutzung der Anwendung sich die mitgelieferten Bei
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1f0PrLSLIY4/Al0AAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
 </root>
