@@ -33,8 +33,12 @@ namespace OneRecToManyPdfs.WinForms.F48
 
             if (!File.Exists(fullRecFilePath))
             {
-                MessageBox.Show(this, $"The following file is not found: '{fullRecFilePath}'\n\nApplication will close.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(0);
+                MessageBox.Show(this, $"The following file is not found: '{fullRecFilePath}'\n\nPlease select a valid Excel file. The folder containing the Excel file is expected to have the templates as well", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                fullRecFilePath = SelectNewExcelFilePath();
+                var lastSlashIdx = fullRecFilePath.LastIndexOf(@"\");
+                Properties.Settings.Default.RecordFileName = fullRecFilePath.Substring(lastSlashIdx + 1);
+                Properties.Settings.Default.DataFolderPath = fullRecFilePath.Substring(0, lastSlashIdx);
+                _dataFolderPath = Properties.Settings.Default.DataFolderPath;
             }
 
             IDataSource dataSource = new Spreadsheet();
@@ -56,6 +60,25 @@ namespace OneRecToManyPdfs.WinForms.F48
             }
 
             btnFillTemplates.Enabled = false;
+        }
+
+        private string SelectNewExcelFilePath()
+        {
+            // Select File
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = _dataFolderPath;
+            openFileDialog.Filter = "Excel|*.xlsx";
+            openFileDialog.FilterIndex = 1;
+            openFileDialog.Multiselect = false;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                return openFileDialog.FileName;
+            }
+            else
+            {
+                Environment.Exit(0);
+                return null;
+            }
         }
 
         private void btnFillTemplates_Click(object sender, EventArgs e)
@@ -114,6 +137,11 @@ namespace OneRecToManyPdfs.WinForms.F48
             bulkPdf.InitialDirectory = _dataFolderPath;
             bulkPdf.ShowDialog();
             RefreshData();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -144,6 +144,7 @@
             this.Controls.Add(this.cboRecs);
             this.Name = "Form1";
             this.Text = "One Record To Multiple PDFs";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
